@@ -1,0 +1,53 @@
+﻿@model EventManagement.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+            <div class="card-header text-center"><h4>Login Account</h4></div>
+            <form asp-action="Login">
+            <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-check">
+                            <input asp-for="Role" type="radio" class="form-check-input" id="Role_Admin" name="Role" value="Admin" checked>
+                            <label for="Role_Admin" class="form-check-label">Admin</label>
+                        </div>
+                        <div class="form-check">
+                            <input asp-for="Role" type="radio" class="form-check-input" id="Role_Organizer" name="Role" value="Organizer">
+                            <label for="Role_Organizer" class="form-check-label">Organizer</label>
+                        </div>
+                        <div class="form-check">
+                            <input asp-for="Role" type="radio" class="form-check-input" id="Role_User" name="Role" value="User">
+                            <label for="Role_User" class="form-check-label">User</label>
+                        </div>
+                    </div>
+            </div>
+                <div class="card-footer"><input type="submit" value="Login" class="btn btn-primary d-grid gap-2 col-6 mx-auto" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <p>Don't have an account? <a asp-action="Create">Register here</a></p>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
